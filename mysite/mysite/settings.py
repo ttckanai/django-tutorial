@@ -27,10 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vkpwk$3lu8kg_c=r(w9p%j(@3=h8t=l+8f1bb&eb9i1nx@h!gl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# デバッグモードの無効化
+# DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
+# ホスト名の設定
 ALLOWED_HOSTS = []
-
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
