@@ -9,7 +9,6 @@ services:
     plan: free
     name: mysite
     runtime: python
-    rootDir: mysite
     buildCommand: './build.sh'
     startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
