@@ -8,9 +8,10 @@ services:
   - type: web
     plan: free
     name: mysite
+    wordDir: mysite
     runtime: python
-    buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn --chdir mysite mysite.asgi:application -k uvicorn.workers.UvicornWorker'
+    buildCommand: './mysite/build.sh'
+    startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
